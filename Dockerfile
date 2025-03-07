@@ -1,4 +1,4 @@
-FROM golang:latest AS build
+FROM --platform=$BUILDPLATFORM golang:latest AS build
 
 ARG TARGETARCH
 
@@ -27,7 +27,7 @@ WORKDIR /build
 
 RUN GOOS=linux GOARCH=$TARGETARCH go build -ldflags="-w -s" -v -o srtrelay .
 
-FROM ubuntu:latest
+FROM --platform=$BUILDPLATFORM ubuntu:latest
 
 RUN apt-get update && \
     apt-get upgrade -y && \
