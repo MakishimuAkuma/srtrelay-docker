@@ -25,7 +25,7 @@ RUN rm -rf libsrt libsrt-build && \
 
 WORKDIR /build
 
-RUN GOOS=linux GOARCH=$TARGETARCH go build -ldflags="-w -s" -v -o srtrelay .
+RUN go build -ldflags="-w -s" -v -o srtrelay .
 
 FROM --platform=$BUILDPLATFORM ubuntu:latest
 
