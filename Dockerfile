@@ -27,7 +27,7 @@ WORKDIR /build
 
 RUN GOOS=linux GOARCH=$TARGETARCH go build -ldflags="-w -s" -v -o srtrelay .
 
-FROM debian:stable-slim
+FROM ubuntu:latest
 
 RUN apt-get update && \
     apt-get upgrade -y && \
