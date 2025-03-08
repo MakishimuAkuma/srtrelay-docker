@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM golang:latest AS build
+FROM golang:latest AS build
 
 ARG TARGETARCH
 
@@ -27,7 +27,7 @@ WORKDIR /build
 
 RUN go build -ldflags="-w -s" -v -o srtrelay .
 
-FROM --platform=$BUILDPLATFORM debian:stable-slim
+FROM debian:stable-slim
 
 RUN apt-get update && \
     apt-get upgrade -y && \
