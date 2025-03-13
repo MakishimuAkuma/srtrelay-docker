@@ -37,7 +37,7 @@ RUN apt-get update && \
 
 WORKDIR /srtrelay
 
-COPY --from=build /build/config.toml.example ./config.toml
+COPY ./config.toml /etc/srtrelay/config.toml
 COPY --from=build /build/srtrelay ./
 COPY --from=build /usr/local/lib/libsrt* /usr/lib/
 
